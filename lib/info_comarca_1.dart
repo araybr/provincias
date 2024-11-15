@@ -30,8 +30,35 @@ class InfoComarca1Screen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            ))
+        )),
+        Align(
+            alignment: Alignment.centerLeft,
+              child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 16.0),
+              child: Text(
+              "Capital: " + comarca["capital"],
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  fontSize: 20,
+                  ),
+            ),
+        )),
+         Align(
+            alignment: Alignment.centerLeft,
+              child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 16.0),
+              child: Text(
+              comarca["desc"],
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  fontSize: 15,
+                  ),
+            ),
+        )),
       ],
+      
     ));
   }
 }
