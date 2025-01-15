@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'counties.dart';
 
 class ComarquesScreen extends StatelessWidget {
@@ -19,23 +20,28 @@ class ComarquesScreen extends StatelessWidget {
           return Stack(
             alignment: Alignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Image.network(
-                    comarca["img"],
-                    width: double.infinity,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              InkWell(
+                  onTap: () {
+                    context.push('/infoComarca1');
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.network(
+                        comarca["img"],
+                        width: double.infinity,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )),
               Positioned(
                 bottom: 20,
                 child: Container(
                   color: Colors.black54,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
                     comarca["comarca"],
                     style: const TextStyle(
