@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "783628828891",
+    "project_id": "provincias-af807",
+    "storage_bucket": "provincias-af807.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783628828891:android:4de7bbad890a5d0a2f4cfe",
+        "android_client_info": {
+          "package_name": "com.example.flutter_provincias"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBp42euA_mLz6-y7kxG7n7ZVXtHNbmLdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

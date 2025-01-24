@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'counties.dart';
 
 class InfoComarca1Screen extends StatelessWidget {
-  const InfoComarca1Screen({Key? key}) : super(key: key);
+  final String provincia;
+  final String comarca_env;
+  const InfoComarca1Screen({super.key, required this.provincia, required this.comarca_env});
 
   @override
   Widget build(BuildContext context) {
-    var comarca = provincies["provincies"][0]["comarques"][0];
+    var comarca = provincies["provincies"][int.parse(provincia)]["comarques"][int.parse(comarca_env)];
 
     return Scaffold(
         appBar: AppBar(title: const Text('Provincia')),
@@ -56,11 +58,11 @@ class InfoComarca1Screen extends StatelessWidget {
                     ),
                   ),
                 )),
-            const SizedBox(height: 280),
+            const SizedBox(height: 10),
 
               ElevatedButton(
                 onPressed: () {
-                  context.push('/infoComarca2');
+                  context.push('/infoComarca2/' + provincia + "/" + comarca_env);
                 }, 
                 child: const Text('Ver Más Información'),
               )

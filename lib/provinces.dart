@@ -14,12 +14,12 @@ class ProvinciasScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buildCityContainer(
-                  provincies["provincies"][2]["img"], 'Castelló', context),
+                  provincies["provincies"][2]["img"], 'Castelló', context, 2),
               SizedBox(height: 20),
               buildCityContainer(
-                  provincies["provincies"][0]["img"], 'Valencia', context),
+                  provincies["provincies"][0]["img"], 'Valencia', context, 0),
               SizedBox(height: 20),
-              buildCityContainer(provincies["provincies"][1]["img"], 'Alacant', context),
+              buildCityContainer(provincies["provincies"][1]["img"], 'Alacant', context, 1),
             ],
           ),
         ),
@@ -27,10 +27,10 @@ class ProvinciasScreen extends StatelessWidget {
     );
   }
 
-  Widget buildCityContainer(String imagePath, String cityName, BuildContext context) {
+  Widget buildCityContainer(String imagePath, String cityName, BuildContext context, int numero) {
     return InkWell(
         onTap: () {
-          context.push('/comarques');
+          context.push('/comarques/' + numero.toString());
         },
         child: Container(
           width: 200,

@@ -3,15 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'counties.dart';
 
 class ComarquesScreen extends StatelessWidget {
-  const ComarquesScreen({Key? key}) : super(key: key);
+  final String provincia;
+  const ComarquesScreen({super.key, required this.provincia});
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> comarques = provincies["provincies"][0]["comarques"];
+    List<dynamic> comarques = provincies["provincies"][int.parse(provincia)]["comarques"];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Comarques de València"),
+        title: const Text("Comarques"),
       ),
       body: ListView.builder(
         itemCount: comarques.length,
@@ -22,7 +23,7 @@ class ComarquesScreen extends StatelessWidget {
             children: [
               InkWell(
                   onTap: () {
-                    context.push('/infoComarca1');
+                    context.push('/infoComarca1/' + provincia + "/" + index.toString());
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
