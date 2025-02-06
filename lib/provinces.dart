@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provincias/peticions_http.dart';
 import 'counties.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,13 +14,23 @@ class ProvinciasScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              buildCityContainer(
-                  provincies["provincies"][2]["img"], 'Castelló', context, 2),
-              SizedBox(height: 20),
-              buildCityContainer(
-                  provincies["provincies"][0]["img"], 'Valencia', context, 0),
-              SizedBox(height: 20),
-              buildCityContainer(provincies["provincies"][1]["img"], 'Alacant', context, 1),
+              FutureBuilder(
+                  future: obtenirProvincies(),
+                  builder: (context, snapshot) {
+                    List<dynamic>? data = snapshot.data;
+                    if (data != null) {
+                      return Column(
+                          children: data.map((provincia) {
+                        return buildCityContainer(
+                            provincia["img"],
+                            provincia["provincia"],
+                            context,
+                            provincia["provincia"]);
+                      }).toList());
+                    } else {
+                      return Text("Error");
+                    }
+                  })
             ],
           ),
         ),
@@ -27,7 +38,8 @@ class ProvinciasScreen extends StatelessWidget {
     );
   }
 
-  Widget buildCityContainer(String imagePath, String cityName, BuildContext context, int numero) {
+  Widget buildCityContainer(
+      String imagePath, String cityName, BuildContext context, int numero) {
     return InkWell(
         onTap: () {
           context.push('/comarques/' + numero.toString());

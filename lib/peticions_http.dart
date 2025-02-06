@@ -22,3 +22,60 @@ Future<dynamic> obteClima(
     throw Exception('No s\'ha pogut connectar');
   }
 }
+
+Future<List> obtenirComarques(String provincia) async {
+  String url =
+      "https://node-comarques-rest-server-production.up.railway.app/api/comarques/$provincia";
+  http.Response response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == HttpStatus.ok) {
+    String body = utf8.decode(response.bodyBytes);
+    final result = jsonDecode(body);
+    return result;
+  } else {
+    throw Exception('No s\'ha pogut connectar');
+  }
+}
+
+Future<List> obtenirProvincies() async {
+  String url =
+      "https://node-comarques-rest-server-production.up.railway.app/api/comarques";
+  http.Response response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == HttpStatus.ok) {
+    String body = utf8.decode(response.bodyBytes);
+    final result = jsonDecode(body);
+    return result;
+  } else {
+    throw Exception('No s\'ha pogut connectar');
+  }
+}
+
+Future<List> obtenirComarquesAmbImatge(String provincia) async {
+  String url =
+      "https://node-comarques-rest-server-production.up.railway.app/api/comarques/comarquesAmbImatge/$provincia";
+  http.Response response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == HttpStatus.ok) {
+    String body = utf8.decode(response.bodyBytes);
+    final result = jsonDecode(body);
+    return result;
+  } else {
+    throw Exception('No s\'ha pogut connectar');
+  }
+}
+
+Future<dynamic> obtenirInfoComarca(String comarca) async {
+  String url =
+      "https://node-comarques-rest-server-production.up.railway.app/api/comarques/infoComarca/$comarca";
+  http.Response response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == HttpStatus.ok) {
+    String body = utf8.decode(response.bodyBytes);
+    final result = jsonDecode(body);
+    return result;
+  } else {
+    throw Exception('No s\'ha pogut connectar');
+  }
+}
+
