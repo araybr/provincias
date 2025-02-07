@@ -21,12 +21,14 @@ class ProvinciasScreen extends StatelessWidget {
                     if (data != null) {
                       return Column(
                           children: data.map((provincia) {
-                        return buildCityContainer(
-                            provincia["img"],
-                            provincia["provincia"],
-                            context,
-                            provincia["provincia"]);
-                      }).toList());
+                            return buildCityContainer(
+                              provincia["img"],
+                              provincia["provincia"],
+                              context,
+                              provincia["provincia"]
+                            );
+                          }).toList()
+                        );
                     } else {
                       return Text("Error");
                     }
@@ -39,10 +41,10 @@ class ProvinciasScreen extends StatelessWidget {
   }
 
   Widget buildCityContainer(
-      String imagePath, String cityName, BuildContext context, int numero) {
+      String imagePath, String cityName, BuildContext context, String numero) {
     return InkWell(
         onTap: () {
-          context.push('/comarques/' + numero.toString());
+          context.push('/comarques/' + numero);
         },
         child: Container(
           width: 200,

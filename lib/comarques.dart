@@ -46,7 +46,7 @@ class _ComarquesScreenState extends State<ComarquesScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      context.push('/infoComarca1/${widget.provincia}/$index');
+                      context.push('/infoComarca1/${widget.provincia}/' + index.toString());
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
