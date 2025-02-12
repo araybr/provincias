@@ -16,7 +16,7 @@ class _ComarquesScreenState extends State<ComarquesScreen> {
   @override
   void initState() {
     super.initState();
-    comarquesFuture = obtenirComarques(widget.provincia);
+    comarquesFuture = obtenirComarquesAmbImatge(widget.provincia);
   }
 
   @override
@@ -46,7 +46,7 @@ class _ComarquesScreenState extends State<ComarquesScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      context.push('/infoComarca1/${widget.provincia}/' + index.toString());
+                      context.push('/infoComarca1/${widget.provincia}/${comarca["nom"]}');
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

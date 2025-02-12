@@ -66,16 +66,27 @@ Future<List> obtenirComarquesAmbImatge(String provincia) async {
 }
 
 Future<dynamic> obtenirInfoComarca(String comarca) async {
-  String url =
-      "https://node-comarques-rest-server-production.up.railway.app/api/comarques/infoComarca/$comarca";
-  http.Response response = await http.get(Uri.parse(url));
+  try {
+    String url = "https://node-comarques-rest-server-production.up.railway.app/api/comarques/infoComarca/${Uri.encodeComponent(comarca)}";
+    print("Intentando conectar a: $url");
 
-  if (response.statusCode == HttpStatus.ok) {
-    String body = utf8.decode(response.bodyBytes);
-    final result = jsonDecode(body);
-    return result;
-  } else {
-    throw Exception('No s\'ha pogut connectar');
+    final response = await http.get(Uri.parse(url));
+
+    print("Código de respuesta: ${response.statusCode}");
+
+    if (response.statusCode == HttpStatus.ok) {
+      String body = utf8.decode(response.bodyBytes);
+      print("Respuesta recibida: $body");
+      return jsonDecode(body);
+    } else {
+      print("Error HTTP: ${response.statusCode} - ${response.reasonPhrase}");
+      throw Exception('Error HTTP: ${response.statusCode}');
+    }
+  } catch (e) {
+    print("Error de conexión: $e");
+    throw Exception('No s’ha pogut connectar: $e');
   }
 }
+
+
 

@@ -31,8 +31,8 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         final String provincia = state.pathParameters['provincia']!;
         final String comarca = state.pathParameters['comarca']!;
-        return InfoComarca1Screen(provincia: provincia, comarca_env:comarca);
-      }
+        return InfoComarca1Screen(provincia: provincia, comarca: comarca);
+      },
     ),
     GoRoute(
       name: 'info_comarca_2',
